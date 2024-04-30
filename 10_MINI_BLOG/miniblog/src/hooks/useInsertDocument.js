@@ -1,6 +1,7 @@
 import { useState, useEffect, useReducer } from "react";
 import { db } from "../firebase/config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { act } from "react-dom/test-utils";
 
 const initialState = {
   loading: null,
@@ -8,6 +9,10 @@ const initialState = {
 };
 
 const insertReducer = (state, action) => {
+
+  console.log('dentro do insert reduce action', action)
+  console.log('dentro do insert reduce state', state)
+
   switch (action.type) {
     case "LOADING":
       return { loading: true, error: null };
